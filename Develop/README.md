@@ -1,20 +1,27 @@
-{
+#Title
+README generator
 
-"projectName": "asdf",
+##Description
+This application generates a professional readme using automated prompts!
 
-"description": "gher",
+##Installation Instructions
+N/A
 
-"install": "wer",
+##Usage Information
+Free to use by anyone!
 
-"usage": "hnasdffd",
+##Contribution Guidelines
+No contributions required
 
-"contributions": "hn",
+##Testing Instructions
+Test as much as you want!
 
-"testing": "sdfg",
+##License
+MIT
 
-"license": "Academic Free License v3.0",
+##Github Username
+acarter867
 
-"github": "asdf",
+##Email Address
+acarter867@icloud.com
 
-"email": "hret"
-}

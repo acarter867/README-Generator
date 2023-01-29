@@ -11,13 +11,29 @@ const questions = ['Enter the title of the project', 'Enter description', 'Enter
 function writeToFile(fileName, data) {
     const answers = [data.projectName, data.description, data.install, data.usage, data.contributions, 
     data.testing, data.license, data.github, data.email];
-    
-    for(let i = 0; i < answers.length; i++){
-        fs.writeFile(fileName, JSON.stringify(answers[i], null, '\n'), (err) =>
-        err ? console.log(err) : console.log('Success!')
-    );
+    let outputFile = createFile(answers);
+    console.log(outputFile);
+
+    fs.writeFile(fileName, outputFile, (err) =>
+    err ? console.log(err) : console.log('Success!')
+
+    ) 
+}
+
+function createFile(arr){
+    const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
+        "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
+    let result = "";
+    for(let i = 0; i < arr.length; i++){
+        let currSection = "";
+        if(i === 0){
+            currSection = "#" + sections[i] + "\n" + arr[i];
+        }else{
+            currSection = "##" + sections[i] + "\n" + arr[i];
+        }
+        result += (currSection + "\n\n");
     }
-    
+    return result;
 }
 
 function collectData(){
