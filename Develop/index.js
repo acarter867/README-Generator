@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 const questions = ['Enter the title of the project', 'Enter description', 'Enter installation instructions',
@@ -11,29 +12,12 @@ const questions = ['Enter the title of the project', 'Enter description', 'Enter
 function writeToFile(fileName, data) {
     const answers = [data.projectName, data.description, data.install, data.usage, data.contributions, 
     data.testing, data.license, data.github, data.email];
-    let outputFile = createFile(answers);
+    let outputFile = generateMarkdown(answers);
     console.log(outputFile);
 
     fs.writeFile(fileName, outputFile, (err) =>
     err ? console.log(err) : console.log('Success!')
-
     ) 
-}
-
-function createFile(arr){
-    const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
-        "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
-    let result = "";
-    for(let i = 0; i < arr.length; i++){
-        let currSection = "";
-        if(i === 0){
-            currSection = "#" + sections[i] + "\n" + arr[i];
-        }else{
-            currSection = "##" + sections[i] + "\n" + arr[i];
-        }
-        result += (currSection + "\n\n");
-    }
-    return result;
 }
 
 function collectData(){
@@ -74,7 +58,7 @@ function collectData(){
                 type: 'list',
                 name: 'license',
                 message: questions[6],
-                choices: ['MIT', 'Microsoft Public License', 'Academic Free License v3.0', 'Artistic license 2.0']
+                choices: ['MIT', 'GNU', 'Eclipse Public License', 'IBM Public License']
             },
             {
                 type: 'input',

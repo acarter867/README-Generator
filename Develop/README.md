@@ -1,27 +1,26 @@
-#Title
-README generator
+# README Generator
 
-##Description
-This application generates a professional readme using automated prompts!
+## Description
+This application generates professional README's throgh automated prompts
 
-##Installation Instructions
+## Installation Instructions
 N/A
 
-##Usage Information
-Free to use by anyone!
+## Usage Information
+Use for any of your projects which require a fast, easy, and accurate README!
 
-##Contribution Guidelines
-No contributions required
+## Contribution Guidelines
+No contributions necessary!
 
-##Testing Instructions
-Test as much as you want!
+## Testing Instructions
+Have fun, break it if you can! Report errors please!
 
-##License
-MIT
+## License 
+https://opensource.org/licenses/MIT [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-##Github Username
+## Github Username
 acarter867
 
-##Email Address
+## Email Address
 acarter867@icloud.com
 
