@@ -45,37 +45,31 @@ function renderLicenseSection(license) {
 }
 
 function generateTableOfContents(){
-  result = '# Table of Contents\n\n';
+  result = '# Table of Contents\n';
   const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
   "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
   
   for(let i = 0; i < sections.length; i++){
-    result += '[' + sections[i] + ']' + ' (' + sections[i] + ')\n';
+    result += '[' + sections[i] + ']' + ' (#' + sections[i] + ')';
   }
   return result;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(arr) {
-  const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
-  "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
-  let result = "";
+ let result = "";
   //generate markdown for each specific section. Use previously generated license section when i === 6 (license)
-  for(let i = 0; i < arr.length + 1; i++){
-    
+  for(let i = 0; i < arr.length; i++){
+    const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
+  "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
     let currSection = "";
     if(i === 0){
-      const badge = renderLicenseBadge(license);
-      currSection = "# " + arr[i] + badge;
-    }else if(i === 1){
-
-      i -= 1;
-      continue;
-    }
-    else if(i !== 6){
-        currSection = "## " + sections[i] + "\n" + arr[i];
-    }else if(i===6){
+      const badge = renderLicenseBadge(arr[6]);
+      currSection = "# " + arr[i] + badge + "\n\n" + generateTableOfContents();
+    }else if(i === 6){
       currSection = renderLicenseSection(arr[i]);
+    }else{
+        currSection = "## " + sections[i] + "\n" + arr[i];
     }
     //2 new lines at end of section
     result += (currSection + "\n\n");
@@ -83,9 +77,5 @@ function generateMarkdown(arr) {
   return result;
 }
 
-//Generate table of contents
-function tableOfContents(arr){
-    
-}
 
 module.exports = generateMarkdown;
