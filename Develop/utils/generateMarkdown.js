@@ -35,30 +35,47 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-    const badge = renderLicenseBadge(license);
     const currLicense = renderLicenseLink(license);
+    if(license === null || license === ""){
+      return "";
+    }
 
-    let returnString = "## " + "License \n" + currLicense + " " + badge;
+    let returnString = "## " + "License \n" + currLicense;
     return returnString;
+}
+
+function generateTableOfContents(){
+  result = '# Table of Contents\n';
+  const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
+  "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
+  
+  for(let i = 0; i < sections.length; i++){
+    result += '[' + sections[i] + ']' + ' (#' + sections[i] + ')';
+  }
+  return result;
 }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(arr) {
-  const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
-  "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
-  let result = "";
+ let result = "";
+  //generate markdown for each specific section. Use previously generated license section when i === 6 (license)
   for(let i = 0; i < arr.length; i++){
+    const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
+  "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
     let currSection = "";
     if(i === 0){
-        currSection = "# " + arr[i];
-    }else if(i !== 6){
-        currSection = "## " + sections[i] + "\n" + arr[i];
-    }else if(i===6){
+      const badge = renderLicenseBadge(arr[6]);
+      currSection = "# " + arr[i] + badge + "\n\n" + generateTableOfContents();
+    }else if(i === 6){
       currSection = renderLicenseSection(arr[i]);
+    }else{
+        currSection = "## " + sections[i] + "\n" + arr[i];
     }
+    //2 new lines at end of section
     result += (currSection + "\n\n");
   }
   return result;
 }
+
 
 module.exports = generateMarkdown;
