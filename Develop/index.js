@@ -8,18 +8,22 @@ const questions = ['Enter the title of the project', 'Enter description', 'Enter
 'Enter usage information', 'Enter contribution guidelines', 'Enter testing instructions',
 'Select a license', 'Enter github username', 'Enter email address'];
 
-// TODO: Create a function to write README file
+//Write resopnses to README
 function writeToFile(fileName, data) {
+    //move responses to array
     const answers = [data.projectName, data.description, data.install, data.usage, data.contributions, 
     data.testing, data.license, data.github, data.email];
+    
+    //Generate markdown & send to variable
     let outputFile = generateMarkdown(answers);
-    console.log(outputFile);
 
+    //Write file, console log errors
     fs.writeFile(fileName, outputFile, (err) =>
     err ? console.log(err) : console.log('Success!')
     ) 
 }
 
+//prompt user for responses
 function collectData(){
     let result = '';
     inquirer
@@ -72,16 +76,17 @@ function collectData(){
             }
         ])
         .then(data => {
+            //write to file using data
             writeToFile('README.md', data)
         });
         return result;
 }
 
 
-// TODO: Create a function to initialize app
+//initializer function
 function init() {
     collectData();
 }
 
-// Function call to initialize app
+//initializer call
 init();
