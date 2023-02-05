@@ -50,7 +50,7 @@ function generateTableOfContents(){
   "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
   
   for(let i = 0; i < sections.length; i++){
-    result += '[' + sections[i] + ']' + ' (#' + sections[i] + ')';
+    result += '[' + sections[i] + ']' + ' (#' + sections[i] + ')\n';
   }
   return result;
 }
