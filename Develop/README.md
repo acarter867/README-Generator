@@ -3,9 +3,9 @@
 # Table of Contents
 [Title] (Title)
 [Description] (#Description)
-[Installation Instructions] (#Installation Instructions)
-[Usage Information] (#Usage Information)
-[Contribution Guidelines] (#Contribution Guidelines)
+[Installation-Instructions] (#Installation Instructions)
+[Usage-Information] (#Usage Information)
+[Contribution-Guidelines] (#Contribution Guidelines)
 [Testing Instructions] (#Testing Instructions)
 [License] (#License)
 [Github Username] (#Github Username)
