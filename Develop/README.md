@@ -1,7 +1,7 @@
 # asdf[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Table of Contents
-[Title] (#Title)
+[Title] (Title)
 [Description] (#Description)
 [Installation Instructions] (#Installation Instructions)
 [Usage Information] (#Usage Information)
