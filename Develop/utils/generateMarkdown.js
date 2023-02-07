@@ -44,17 +44,6 @@ function renderLicenseSection(license) {
     return returnString;
 }
 
-function generateTableOfContents(){
-  result = '# Table of Contents\n';
-  const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
-  "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
-  
-  for(let i = 0; i < sections.length; i++){
-    result += '[' + sections[i] + ']' + ' (#' + sections[i] + ')\n';
-  }
-  return result;
-}
-
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(arr) {
  let result = "";
@@ -65,7 +54,7 @@ function generateMarkdown(arr) {
     let currSection = "";
     if(i === 0){
       const badge = renderLicenseBadge(arr[6]);
-      currSection = "# " + arr[i] + badge + "\n\n" + generateTableOfContents();
+      currSection = "# " + arr[i] + badge;
     }else if(i === 6){
       currSection = renderLicenseSection(arr[i]);
     }else{
