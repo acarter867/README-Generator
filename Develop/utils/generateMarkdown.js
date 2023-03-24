@@ -49,12 +49,13 @@ function generateMarkdown(arr) {
  let result = "";
   //generate markdown for each specific section. Use previously generated license section when i === 6 (license)
   for(let i = 0; i < arr.length; i++){
-    const sections = ["Title", "Description", "Installation Instructions", "Usage Information",
-  "Contribution Guidelines", "Testing Instructions", "License", "Github Username", "Email Address"];
+    const sections = ["Title", "Description", "Installation", "Usage",
+  "Contribution", "Testing", "License", "Github", "Email"];
     let currSection = "";
     if(i === 0){
       const badge = renderLicenseBadge(arr[6]);
       currSection = "# " + arr[i] + badge;
+      currSection += generateTableOfContents(sections);
     }else if(i === 6){
       currSection = renderLicenseSection(arr[i]);
     }else{
@@ -62,6 +63,16 @@ function generateMarkdown(arr) {
     }
     //2 new lines at end of section
     result += (currSection + "\n\n");
+  }
+  return result;
+}
+
+function generateTableOfContents(arr){
+  let result = "\n\n"
+  for(let i = 1; i < arr.length -1; i++){
+    let firstWord = arr[i].split(" ");
+    let currLine = `- [${arr[i]}](#${firstWord[0]})\n`;
+    result += currLine;
   }
   return result;
 }
